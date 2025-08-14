@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: hsla(111, 72%, 77%, 0.504);
+}
+
+html.dark body {
+  background-color: #1a202c;
+  color: #f7fafc;
+}
+
+main {
+  background: transparent;
+}
+
+html.dark main {
+  background: transparent;
+  color: #f7fafc;
+}
