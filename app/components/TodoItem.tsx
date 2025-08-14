@@ -59,21 +59,21 @@ export default function TodoItem({ todo, toggleDone, remove, updateText }: Props
   };
 
   return (
-    <li className="flex justify-between items-center p-4 border border-gray-200 rounded-lg bg-white shadow-sm hover:shadow-md transition-all duration-200">
-      <div className="flex items-center space-x-3 flex-1">
+    <li className="flex justify-between items-start p-4 border border-gray-200 rounded-lg bg-white shadow-sm hover:shadow-md transition-all duration-200">
+      <div className="flex items-center space-x-3 flex-1 min-w-0">
         <button
           onClick={handleToggle}
-          disabled={isToggling}
+          disabled={isToggling || isEditing}
           className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all duration-200 ${
             todo.done
               ? 'bg-green-500 border-green-500 text-white'
               : 'border-gray-300 hover:border-green-400'
-          } ${isToggling ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
+          } ${(isToggling || isEditing)? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
         >
           {todo.done && <span className="text-sm">✓</span>}
         </button>
         {isEditing ? (
-          <input
+				<input
             value={draft}
             onChange={e => setDraft(e.target.value)}
             onKeyDown={e => {
@@ -81,11 +81,11 @@ export default function TodoItem({ todo, toggleDone, remove, updateText }: Props
               if (e.key === 'Escape') handleCancel();
             }}
             autoFocus
-            className="flex-1 text-lg border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
+					className="flex-1 w-full text-lg border border-gray-300 rounded px-2 py-1 bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         ) : (
           <span 
-            className={`flex-1 text-lg transition-all duration-200 ${
+            className={`flex-1 text-lg transition-all duration-200 whitespace-normal break-words overflow-hidden ${
               todo.done 
                 ? 'line-through text-gray-500' 
                 : 'text-gray-800'
