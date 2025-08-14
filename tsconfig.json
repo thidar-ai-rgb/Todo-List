@@ -4,6 +4,9 @@
     "module": "ESNext",
     "jsx": "preserve",
     "moduleResolution": "bundler",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./app/*"]},
     "strict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
