@@ -1,16 +1,54 @@
 'use client';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import TodoItem from './components/TodoItem';
+
+interface Todo {
+  id: number;
+  text: string;
+  done: boolean;
+}
 
 export default function Home() {
   const [todos, setTodos] = useState([{ id: 1, text: 'Try Next.js 🚀', done: false }]);
   const [text, setText] = useState('');
+   const [error, setError] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
+// Fetch todos on component mount
+  useEffect(() => {
+    fetchTodos();
+  }, []);
+const fetchTodos = async () => {
+    try {
+        setError(null);
+      const response = await fetch('/api/todos');
+      if (!response.ok) throw new Error('Failed to fetch todos');
+      const data = await response.json();
+      setTodos(data);
+    } catch (err) {
+      console.error('Error fetching todos:', err);
+    }
+  };
 
-  const addTodo = () => {
-    if (!text.trim()) return;
-    const newTodo = { id: Date.now(), text, done: false };
-    setTodos([...todos, newTodo]);
-    setText('');
+  const addTodo = async () => {
+    if (!text.trim()|| submitting) return;
+       
+    try {
+      setSubmitting(true);
+       setError(null);
+       const response = await fetch('/api/todos', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text })
+      });
+        if (!response.ok) throw new Error('Failed to add todo');
+         const newTodo = await response.json();
+      setTodos(prev => [...prev, newTodo]);
+      setText('');
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to add todo');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const toggleDone = (id: number) => {
