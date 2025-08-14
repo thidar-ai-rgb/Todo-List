@@ -143,9 +143,9 @@ export default function Home() {
   if (loading) {
     return (
       <main className="max-w-xl mx-auto p-4 font-sans">
-        <div className="flex flex-col justify-center items-center h-64 space-y-4">
+        <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm p-8 flex flex-col justify-center items-center space-y-4">
           <LoadingSpinner size="lg" />
-          <div className="text-lg text-gray-600">Loading todos...</div>
+          <div className="text-lg text-gray-600 dark:text-gray-300">Loading todos...</div>
         </div>
       </main>
     );
@@ -153,11 +153,12 @@ export default function Home() {
 
   return (
     <main className="max-w-xl mx-auto p-4 font-sans">
-      <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">✅ Todo List</h1>
+      <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm p-6 md:p-8">
+        <h1 className="text-3xl font-bold mb-6 text-center text-gray-800 dark:text-gray-100">✅ Todo List</h1>
       
       {/* Error Display */}
       {error && (
-        <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
+        <div className="mb-4 p-3 bg-red-100 dark:bg-red-900/30 border border-red-400 dark:border-red-700 text-red-700 dark:text-red-300 rounded">
           {error}
         </div>
       )}
@@ -169,17 +170,18 @@ export default function Home() {
           onChange={e => setText(e.target.value)} 
           onKeyPress={handleKeyPress}
           placeholder="What needs to be done?" 
-          className="border border-gray-300 p-3 flex-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="border border-gray-300 dark:border-gray-600 p-3 flex-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
           disabled={submitting}
         />
         <button 
           onClick={addTodo} 
           disabled={submitting || !text.trim()}
-          className="bg-blue-500 hover:bg-blue-600 disabled:bg-gray-400 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+          className="bg-blue-500 hover:bg-green-600 disabled:bg-gray-400 text-white px-6 py-3 rounded-lg font-medium transition-colors"
         >
           {submitting ? 'Adding...' : 'Add'}
         </button>
       </div>
+
 
       {/* Clear All Button */}
       {todos.length > 0 && (
@@ -207,6 +209,7 @@ export default function Home() {
           ))}
         </ul>
       )}
+      </div>
     </main>
   );
 }
