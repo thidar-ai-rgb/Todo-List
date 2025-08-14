@@ -1,5 +1,5 @@
 // Shared in-memory storage for todos
-export let todos: Array<{ id: number; text: string; done: boolean }> = [
+/*export let todos: Array<{ id: number; text: string; done: boolean }> = [
   { id: 1, text: 'Try Next.js 🚀', done: false },
   { id: 2, text: 'Build API endpoints', done: false },
   { id: 3, text: 'Connect frontend to backend', done: false }
@@ -22,5 +22,5 @@ export const updateTodo = (id: number, updates: Partial<{ text: string; done: bo
   
   todos[todoIndex] = { ...todos[todoIndex], ...updates };
   return todos[todoIndex];
-};
+};*/
 
