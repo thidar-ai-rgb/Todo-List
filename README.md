@@ -48,7 +48,7 @@ The app features a **beautiful, modern UI** with smooth animations, hover effect
 
 ### **1. Clone the Repository**
 ```bash
-git clone <repository-url>
+git clone git@github.com:thidar-ai-rgb/Todo-List.git
 cd Todo-List
 ```
 
@@ -70,7 +70,7 @@ npm run dev
 ```
 
 ### App will be available at:
-http://localhost:3000
+https://todo-list-eight-zeta-21.vercel.app/
 
 ## 👥 Who Did What
 
