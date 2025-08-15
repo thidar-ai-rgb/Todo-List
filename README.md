@@ -92,6 +92,7 @@ Loading states & error handling
 
 Fully responsive design
 
+
 Smooth animations & modern UI
 
 Type-safe codebase with TypeScript
