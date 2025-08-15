@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import TodoItem from './components/TodoItem';
 import LoadingSpinner from './components/LoadingSpinner';
 
@@ -15,11 +15,19 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   // Fetch todos on component mount
   useEffect(() => {
     fetchTodos();
   }, []);
+
+  // Focus input when component mounts and after loading
+  useEffect(() => {
+    if (!loading && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [loading]);
 
   const fetchTodos = async () => {
     try {
@@ -59,6 +67,13 @@ export default function Home() {
       setSubmitting(false);
     }
   };
+
+  // Focus input after submitting is complete
+  useEffect(() => {
+    if (!submitting && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [submitting]);
 
   const toggleDone = async (id: number) => {
     try {
@@ -166,6 +181,7 @@ export default function Home() {
       {/* Add Todo Form */}
       <div className="flex gap-2 mb-6">
         <input 
+          ref={inputRef}
           value={text} 
           onChange={e => setText(e.target.value)} 
           onKeyPress={handleKeyPress}
