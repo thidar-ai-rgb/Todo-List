@@ -97,6 +97,16 @@ Smooth animations & modern UI
 
 Type-safe codebase with TypeScript
 
-![Todo List Screenshot](images/app_UI.png)
-![Git Log Screenshot](images/git_log.png)
-![Git Graph Screenshot](images/git_graph.png)
+## 📷 Screenshots
+
+### 🖥 App Interface
+[![Todo List UI](images/app_UI.png)](images/app_UI.png)  
+*A clean, modern interface with dark/light mode support.*
+
+### 📜 Git Commit History
+[![Git Log](images/git_log.png)](images/git_log.png)  
+*Detailed commit log showing development progress.*
+
+### 🌳 Git Branch Graph
+[![Git Graph](images/git_graph.png)](images/git_graph.png)  
+*Visual representation of branching and merging.*
