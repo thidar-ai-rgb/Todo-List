@@ -96,3 +96,5 @@ Fully responsive design
 Smooth animations & modern UI
 
 Type-safe codebase with TypeScript
+
+![Todo List Screenshot](images/image.png)
