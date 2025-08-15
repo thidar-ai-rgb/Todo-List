@@ -97,6 +97,6 @@ Smooth animations & modern UI
 
 Type-safe codebase with TypeScript
 
-![Todo List Screenshot](images/image.png)
+![Todo List Screenshot](images/app_UI.png)
 ![Git Log Screenshot](images/git_log.png)
 ![Git Graph Screenshot](images/git_graph.png)
